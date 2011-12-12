@@ -1,8 +1,8 @@
-package com.eraasoftware.pool.impl;
+package org.eraasoftware.pool.impl;
 
-import com.eraasoftware.pool.ObjectPool;
-import com.eraasoftware.pool.PoolSettings;
-import com.eraasoftware.pool.PoolableObject;
+import org.eraasoftware.pool.ObjectPool;
+import org.eraasoftware.pool.PoolSettings;
+import org.eraasoftware.pool.PoolableObject;
 
 public class PoolFactory<T> {
 	final PoolSettings<T> settings;

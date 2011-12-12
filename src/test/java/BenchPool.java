@@ -7,11 +7,11 @@ import org.apache.commons.pool.PoolableObjectFactory;
 import org.apache.commons.pool.impl.GenericKeyedObjectPool.Config;
 import org.apache.commons.pool.impl.GenericObjectPool;
 import org.apache.commons.pool.impl.GenericObjectPoolFactory;
+import org.eraasoftware.pool.PoolSettings;
+import org.eraasoftware.pool.PoolableObjectBase;
 import org.eraasoftware.test.Bench;
 import org.eraasoftware.test.Job;
 
-import com.eraasoftware.pool.PoolSettings;
-import com.eraasoftware.pool.PoolableObjectBase;
 
 public class BenchPool extends TestCase {
 
@@ -50,7 +50,7 @@ public class BenchPool extends TestCase {
 			}
 		});
 
-		final com.eraasoftware.pool.ObjectPool<StringBuilder> poolB = getffPool();
+		final org.eraasoftware.pool.ObjectPool<StringBuilder> poolB = getffPool();
 		bench.addJob(new Job() {
 			AtomicInteger totalCalled = new AtomicInteger();
 
@@ -116,7 +116,7 @@ public class BenchPool extends TestCase {
 		return poolFactory.createPool();
 	}
 
-	private com.eraasoftware.pool.ObjectPool<StringBuilder> getffPool() {
+	private org.eraasoftware.pool.ObjectPool<StringBuilder> getffPool() {
 		PoolSettings<StringBuilder> poolSettings = new PoolSettings<StringBuilder>(
 				new PoolableObjectBase<StringBuilder>() {
 

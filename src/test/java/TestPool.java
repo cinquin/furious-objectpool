@@ -1,8 +1,9 @@
+import org.eraasoftware.pool.ObjectPool;
+import org.eraasoftware.pool.PoolSettings;
+import org.eraasoftware.pool.PoolableObjectBase;
+
 import junit.framework.TestCase;
 
-import com.eraasoftware.pool.ObjectPool;
-import com.eraasoftware.pool.PoolSettings;
-import com.eraasoftware.pool.PoolableObjectBase;
 
 public class TestPool extends TestCase {
 	public void testPool() {
