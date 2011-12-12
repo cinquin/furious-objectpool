@@ -1,4 +1,4 @@
-package com.eraasoftware.pool.impl;
+package org.eraasoftware.pool.impl;
 
 public interface Controlable {
 

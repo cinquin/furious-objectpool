@@ -1,7 +1,7 @@
-package com.eraasoftware.pool;
+package org.eraasoftware.pool;
 
-import com.eraasoftware.pool.impl.PoolControler;
-import com.eraasoftware.pool.impl.PoolFactory;
+import org.eraasoftware.pool.impl.PoolControler;
+import org.eraasoftware.pool.impl.PoolFactory;
 
 /**
  * 

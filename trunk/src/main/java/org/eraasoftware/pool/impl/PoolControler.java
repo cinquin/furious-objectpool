@@ -1,9 +1,10 @@
-package com.eraasoftware.pool.impl;
+package org.eraasoftware.pool.impl;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import com.eraasoftware.pool.PoolSettings;
+import org.eraasoftware.pool.PoolSettings;
+
 
 public class PoolControler extends Thread {
 	static PoolControler instance = null;

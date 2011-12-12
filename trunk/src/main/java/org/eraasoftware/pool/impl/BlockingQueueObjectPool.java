@@ -1,4 +1,4 @@
-package com.eraasoftware.pool.impl;
+package org.eraasoftware.pool.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,9 +6,10 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import com.eraasoftware.pool.ObjectPool;
-import com.eraasoftware.pool.PoolSettings;
-import com.eraasoftware.pool.PoolableObject;
+import org.eraasoftware.pool.ObjectPool;
+import org.eraasoftware.pool.PoolSettings;
+import org.eraasoftware.pool.PoolableObject;
+
 
 /**
  * 

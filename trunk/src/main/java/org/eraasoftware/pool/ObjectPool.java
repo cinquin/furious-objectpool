@@ -1,4 +1,4 @@
-package com.eraasoftware.pool;
+package org.eraasoftware.pool;
 
 public interface ObjectPool<T> {
 	/**
