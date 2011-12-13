@@ -1,6 +1,6 @@
-import org.eraasoftware.pool.ObjectPool;
-import org.eraasoftware.pool.PoolSettings;
-import org.eraasoftware.pool.PoolableObjectBase;
+import nf.fr.eraasoft.pool.ObjectPool;
+import nf.fr.eraasoft.pool.PoolSettings;
+import nf.fr.eraasoft.pool.PoolableObjectBase;
 
 import junit.framework.TestCase;
 

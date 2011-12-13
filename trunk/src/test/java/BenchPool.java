@@ -10,8 +10,8 @@ import org.apache.commons.pool.PoolableObjectFactory;
 import org.apache.commons.pool.impl.GenericKeyedObjectPool.Config;
 import org.apache.commons.pool.impl.GenericObjectPool;
 import org.apache.commons.pool.impl.GenericObjectPoolFactory;
-import org.eraasoftware.pool.PoolSettings;
-import org.eraasoftware.pool.PoolableObjectBase;
+import nf.fr.eraasoft.pool.PoolSettings;
+import nf.fr.eraasoft.pool.PoolableObjectBase;
 
 
 public class BenchPool extends TestCase {
@@ -86,7 +86,7 @@ public class BenchPool extends TestCase {
 			}
 		});
 
-		final org.eraasoftware.pool.ObjectPool<StringBuilder> poolB = getffPool();
+		final nf.fr.eraasoft.pool.ObjectPool<StringBuilder> poolB = getffPool();
 		bench.addJob(new Job() {
 			AtomicInteger totalCalled = new AtomicInteger();
 
@@ -113,7 +113,7 @@ public class BenchPool extends TestCase {
 			}
 		});
 		
-		final org.eraasoftware.pool.ObjectPool<StringBuilder> furiousNonBlockingPool = getFuriousNonBlockingPool();
+		final nf.fr.eraasoft.pool.ObjectPool<StringBuilder> furiousNonBlockingPool = getFuriousNonBlockingPool();
 		bench.addJob(new Job() {
 			AtomicInteger totalCalled = new AtomicInteger();
 
@@ -206,7 +206,7 @@ public class BenchPool extends TestCase {
 		return poolFactory.createPool();
 	}
 
-	private org.eraasoftware.pool.ObjectPool<StringBuilder> getffPool() {
+	private nf.fr.eraasoft.pool.ObjectPool<StringBuilder> getffPool() {
 		PoolSettings<StringBuilder> poolSettings = new PoolSettings<StringBuilder>(
 				new PoolableObjectBase<StringBuilder>() {
 
@@ -231,7 +231,7 @@ public class BenchPool extends TestCase {
 		return poolSettings.pool();
 	}
 	
-	private org.eraasoftware.pool.ObjectPool<StringBuilder> getFuriousNonBlockingPool() {
+	private nf.fr.eraasoft.pool.ObjectPool<StringBuilder> getFuriousNonBlockingPool() {
 		PoolSettings<StringBuilder> poolSettings = new PoolSettings<StringBuilder>(
 				new PoolableObjectBase<StringBuilder>() {
 
