@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Threads');
+                data.addColumn('number', 'ApacheCommon Generic Bloking');
+        data.addColumn('number', 'ApacheCommon Generic-Growing');
+        data.addColumn('number', 'Furious Pool');
+        data.addRows([
+		[ '0' , 0 , 0 , 0  ] ,
+		[ '1' , 0 , 0 , 0  ] ,
+		[ '2' , 0 , 0 , 0  ] ,
+		[ '3' , 0 , 0 , 0  ] ,
+		[ '4' , 0 , 0 , 0  ] ,
+		[ '5' , 0 , 0 , 0  ] ,
+		[ '6' , 0 , 0 , 0  ] ,
+		[ '7' , 0 , 0 , 0  ] ,
+		[ '8' , 0 , 0 , 0  ] ,
+		[ '9' , 0 , 0 , 0  ] ,
+		[ '10' , 0 , 0 , 0  ] ,
+		[ '11' , 0 , 0 , 0  ] ,
+		[ '12' , 0 , 0 , 0  ] ,
+		[ '13' , 0 , 0 , 0  ] ,
+		[ '14' , 0 , 0 , 0  ] ,
+		[ '15' , 0 , 0 , 0  ] ,
+		[ '16' , 0 , 0 , 0  ] ,
+		[ '17' , 0 , 0 , 0  ] ,
+		[ '18' , 0 , 0 , 0  ] ,
+		[ '19' , 0 , 0 , 0  ] ,
+		[ '20' , 0 , 0 , 0  ] ,
+		[ '21' , 0 , 0 , 0  ] ,
+		[ '22' , 0 , 0 , 0  ] ,
+		[ '23' , 0 , 0 , 0  ] ,
+		[ '24' , 0 , 0 , 0  ] ,
+		[ '25' , 0 , 0 , 0  ] ,
+		[ '26' , 0 , 0 , 0  ] ,
+		[ '27' , 0 , 0 , 0  ] ,
+		[ '28' , 0 , 0 , 0  ] ,
+		[ '29' , 5092 , 4803 , 722  ] ,
+		[ '30' , 5227 , 5047 , 725  ] ,
+		[ '31' , 5494 , 5432 , 770  ] ,
+		[ '32' , 5219 , 5420 , 692  ] ,
+		[ '33' , 5717 , 5800 , 632  ] ,
+		[ '34' , 6135 , 6006 , 846  ] ,
+		[ '35' , 6313 , 5812 , 757  ] ,
+		[ '36' , 6251 , 6259 , 768  ] ,
+		[ '37' , 6280 , 5991 , 735  ] ,
+		[ '38' , 6220 , 6642 , 812  ] ,
+		[ '39' , 6674 , 6799 , 866  ] ,
+		[ '40' , 6445 , 7044 , 926  ] ,
+		[ '41' , 7344 , 7094 , 885  ] ,
+		[ '42' , 7348 , 7455 , 848  ] ,
+		[ '43' , 7427 , 7475 , 895  ] ,
+		[ '44' , 7671 , 7409 , 992  ] ,
+		[ '45' , 7789 , 7731 , 966  ] ,
+		[ '46' , 8041 , 7755 , 1037  ] ,
+		[ '47' , 8218 , 8103 , 991  ] ,
+		[ '48' , 8153 , 8136 , 1033  ] ,
+		[ '49' , 8278 , 8499 , 1057  ] 
+                      
+		]);
+        var options = {
+          width: 1000, height: 400,
+          title: 'Object pool comparaison'
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+
+    <div id="chart_div"></div>
+  </body>
+</html>
