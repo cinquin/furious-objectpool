@@ -52,15 +52,20 @@ public class PoolSettings<T> {
 		if (maxIdle < min) {
 			maxIdle = min;
 		}
-		if (min > max) {
+		if (max>0 && min > max) {
 			max(min);
 		}
 		return this;
 	}
 
+	/**
+	 * if  
+	 * @param max
+	 * @return
+	 */
 	public PoolSettings<T> max(final int max) {
 		this.max = max;
-		if (max < min) {
+		if (max>0 && max < min) {
 			min(max);
 		}
 		return this;

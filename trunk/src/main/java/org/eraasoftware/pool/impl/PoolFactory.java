@@ -7,7 +7,7 @@ import org.eraasoftware.pool.PoolableObject;
 public class PoolFactory<T> {
 	final PoolSettings<T> settings;
 
-	BlockingQueueObjectPool<T> pool;
+	AbstractPool<T> pool;
 	final PoolableObject<T> poolableObject;
 
 	public PoolFactory(PoolSettings<T> settings, PoolableObject<T> poolableObject) {
@@ -31,8 +31,12 @@ public class PoolFactory<T> {
 	}
 
 	private synchronized void createPoolInstance() {
-		if (pool == null)
-			pool = new BBObjectPool<T>(poolableObject, settings);
+		if (pool == null){
+			if (settings.max()>0)
+				pool = new BBObjectPool<T>(poolableObject, settings);
+			else 
+				pool = new ConcurrentLinkedQueuePool<T>(poolableObject, settings);
+		}
 
 	}
 
