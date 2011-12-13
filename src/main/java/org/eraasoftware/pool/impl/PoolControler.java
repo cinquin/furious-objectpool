@@ -8,7 +8,7 @@ import org.eraasoftware.pool.PoolSettings;
 
 public class PoolControler extends Thread {
 	static PoolControler instance = null;
-	static int interval = 1000;
+	static int interval = 30000;
 	boolean alive = false;
 	Set<PoolSettings<?>> listPoolSettings = new HashSet<PoolSettings<?>>();
 
