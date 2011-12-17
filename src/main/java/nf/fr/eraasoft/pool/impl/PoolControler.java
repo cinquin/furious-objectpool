@@ -12,12 +12,14 @@ public class PoolControler extends Thread {
 	boolean alive = false;
 	Set<PoolSettings<?>> listPoolSettings = new HashSet<PoolSettings<?>>();
 
-	private static void launch() {
+	private static synchronized void  launch() {
 		if (instance == null) {
 			instance = new PoolControler();
 		}
-		if (!instance.alive)
+		if (!instance.alive) {
+			instance.alive = true;
 			instance.start();
+		}
 	}
 
 	public static void addPoolSettings(PoolSettings<?> poolSettings) {
