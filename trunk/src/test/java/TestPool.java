@@ -1,4 +1,5 @@
 import nf.fr.eraasoft.pool.ObjectPool;
+import nf.fr.eraasoft.pool.PoolException;
 import nf.fr.eraasoft.pool.PoolSettings;
 import nf.fr.eraasoft.pool.PoolableObjectBase;
 
@@ -38,7 +39,7 @@ try {
 
 	objectPool.returnObj(buffer);
 
-} catch (InterruptedException e) {
+} catch (PoolException e) {
 	e.printStackTrace();
 } finally {
 	// Don't forget to return object in the pool

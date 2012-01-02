@@ -3,6 +3,7 @@ package nf.fr.eraasoft.pool.impl;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
+import nf.fr.eraasoft.pool.PoolException;
 import nf.fr.eraasoft.pool.PoolSettings;
 import nf.fr.eraasoft.pool.PoolableObject;
 
@@ -24,17 +25,28 @@ public abstract class BlockingQueueObjectPool<T> extends AbstractPool<T> {
 		super(poolableObject,settings);
 		queue = new LinkedBlockingQueue<T>();
 		linkQueue = (LinkedBlockingQueue<T>) queue;
-		init();
+		try {
+			init();
+		} catch (PoolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 
 	@Override
-	public T getObj() throws InterruptedException {
+	public T getObj() throws PoolException {
 		if (queue.size() == 0 && totalSize.get() < settings.max()) {
 			create();
 		}
-		T t = linkQueue.poll(settings.maxWait(), TimeUnit.SECONDS);
-		poolableObject.activate(t);
+		T t = null;
+		try {
+			t = linkQueue.poll(settings.maxWait(), TimeUnit.SECONDS);
+			poolableObject.activate(t);
+		} catch (InterruptedException e) {
+			throw new PoolException(e);
+		}
+		
 		return t;
 	}
 
