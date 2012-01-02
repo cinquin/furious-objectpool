@@ -28,18 +28,19 @@ public class PoolControler extends Thread {
 	}
 
 	public static void shutdown() {
-		instance.alive = false;
-		for (PoolSettings<?> poolSettings : instance.listPoolSettings) {
+		if (instance !=null) {
+			instance.alive = false;
+			for (PoolSettings<?> poolSettings : instance.listPoolSettings) {
 
-			if (poolSettings.pool() instanceof Controlable) {
-				Controlable controlable = (Controlable) poolSettings.pool();
-				controlable.destroy();
+				if (poolSettings.pool() instanceof Controlable) {
+					Controlable controlable = (Controlable) poolSettings.pool();
+					controlable.destroy();
+
+				}
 
 			}
-
+			instance.listPoolSettings.clear();	
 		}
-		instance.listPoolSettings.clear();
-
 	}
 
 	private PoolControler() {
