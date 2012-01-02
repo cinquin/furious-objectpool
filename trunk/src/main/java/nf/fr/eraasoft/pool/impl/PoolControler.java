@@ -30,14 +30,13 @@ public class PoolControler extends Thread {
 	public static void shutdown() {
 		if (instance !=null) {
 			instance.alive = false;
+			instance.interrupt();
 			for (PoolSettings<?> poolSettings : instance.listPoolSettings) {
-				System.out.println("Stop poolSettings...");
 				if (poolSettings.pool() instanceof Controlable) {
 					Controlable controlable = (Controlable) poolSettings.pool();
 					controlable.destroy();
 
 				}
-				System.out.println("OK");
 
 			}
 			instance.listPoolSettings.clear();	
@@ -56,7 +55,7 @@ public class PoolControler extends Thread {
 				sleep(interval);
 				checkPool();
 			} catch (InterruptedException e) {
-				System.out.println("Interupted " + e.getMessage());
+				System.out.println("PoolControler " + e.getMessage());
 				alive = false;
 			}
 		}
