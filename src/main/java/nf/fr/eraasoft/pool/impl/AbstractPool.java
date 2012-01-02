@@ -6,6 +6,7 @@ import java.util.Queue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import nf.fr.eraasoft.pool.ObjectPool;
+import nf.fr.eraasoft.pool.PoolException;
 import nf.fr.eraasoft.pool.PoolSettings;
 import nf.fr.eraasoft.pool.PoolableObject;
 
@@ -32,14 +33,14 @@ public abstract class AbstractPool<T> implements ObjectPool<T>, Controlable {
 		this.settings = settings;
 
 	}
-	protected void init() {
+	protected void init() throws PoolException {
 		for (int n = 0; n < settings.min(); n++) {
 			create();
 		}
 
 	}
 
-	protected void create() {
+	protected void create() throws PoolException {
 		T t = poolableObject.make();
 		totalSize.incrementAndGet();
 		queue.add(t);
@@ -56,8 +57,15 @@ public abstract class AbstractPool<T> implements ObjectPool<T>, Controlable {
 			queue.add(t);
 		} else {
 			destroyObject(t);
-			T newT = poolableObject.make();
-			queue.add(newT);
+			T newT;
+			try {
+				newT = poolableObject.make();
+				queue.add(newT);
+			} catch (PoolException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 
 	}

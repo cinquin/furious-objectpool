@@ -6,7 +6,7 @@ public interface PoolableObject<T> {
 	 * 
 	 * @return
 	 */
-	public T make();
+	public T make() throws PoolException;
 
 	/**
 	 * is invoked on activated instances to make sure they can be borrowed from
@@ -17,7 +17,7 @@ public interface PoolableObject<T> {
 	 * @param t
 	 * @return
 	 */
-	public boolean validate(T t);
+	public boolean validate(T t) ;
 
 	/**
 	 * is invoked on every instance when it is being "dropped" from the pool
@@ -36,7 +36,7 @@ public interface PoolableObject<T> {
 	 * 
 	 * @param t
 	 */
-	public void activate(T t);
+	public void activate(T t) throws PoolException;
 
 	/**
 	 * is invoked on every instance when it is returned to the pool.

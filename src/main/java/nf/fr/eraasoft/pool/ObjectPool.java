@@ -11,7 +11,7 @@ public interface ObjectPool<T> {
 	 * @return an instance of T object
 	 * @throws InterruptedException
 	 */
-	public T getObj() throws InterruptedException;
+	public T getObj() throws PoolException;
 
 	public void returnObj(T object);
 
