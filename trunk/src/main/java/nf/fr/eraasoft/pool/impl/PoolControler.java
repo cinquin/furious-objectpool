@@ -31,12 +31,13 @@ public class PoolControler extends Thread {
 		if (instance !=null) {
 			instance.alive = false;
 			for (PoolSettings<?> poolSettings : instance.listPoolSettings) {
-
+				System.out.println("Stop poolSettings...");
 				if (poolSettings.pool() instanceof Controlable) {
 					Controlable controlable = (Controlable) poolSettings.pool();
 					controlable.destroy();
 
 				}
+				System.out.println("OK");
 
 			}
 			instance.listPoolSettings.clear();	
