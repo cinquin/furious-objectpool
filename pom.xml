@@ -3,8 +3,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>nf.fr.eraasoft</groupId>
-	<artifactId>furious-objectpool</artifactId>
-	<version>1.0</version>
+	<artifactId>objectpool</artifactId>
+	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>furious-objectpool</name>
@@ -13,7 +13,10 @@
     	<groupId>org.sonatype.oss</groupId>
     	<artifactId>oss-parent</artifactId>
     	<version>7</version>
-    </parent>		
+    </parent>
+    <scm>
+    	<developerConnection>scm:svn:https://furious-objectpool.googlecode.com/svn/trunk</developerConnection>
+    </scm>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
