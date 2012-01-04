@@ -3,7 +3,7 @@
 
 	<groupId>nf.fr.eraasoft</groupId>
 	<artifactId>objectpool</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>jar</packaging>
 
 	<name>furious-objectpool</name>
