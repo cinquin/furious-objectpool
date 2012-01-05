@@ -26,7 +26,7 @@ public abstract class AbstractPool<T> implements ObjectPool<T>, Controlable {
 	final PoolSettings<T> settings;
 	final PoolableObject<T> poolableObject;
 	Queue<T> queue;
-	final AtomicInteger totalSize = new AtomicInteger();
+	final AtomicInteger totalSize = new AtomicInteger(0);
 
 	public AbstractPool(final PoolableObject<T> poolableObject, final PoolSettings<T> settings) {
 		this.poolableObject = poolableObject;
@@ -57,14 +57,14 @@ public abstract class AbstractPool<T> implements ObjectPool<T>, Controlable {
 			queue.add(t);
 		} else {
 			destroyObject(t);
-			T newT;
-			try {
-				newT = poolableObject.make();
-				queue.add(newT);
-			} catch (PoolException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+//			T newT;
+//			try {
+//				newT = poolableObject.make();
+//				queue.add(newT);
+//			} catch (PoolException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			
 		}
 
