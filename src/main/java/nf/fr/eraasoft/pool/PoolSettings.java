@@ -21,6 +21,7 @@ public class PoolSettings<T> {
 	private int min = DEFAULT_MIN;
 	private int max = DEFAULT_MAX;
 	private int maxIdle = min;
+	public boolean validateWhenReturn = false;
 
 	private final PoolFactory<T> poolFactory;
 
@@ -86,5 +87,17 @@ public class PoolSettings<T> {
 	public static void shutdown() {
 		PoolControler.shutdown();
 	}
+	
+	/**
+	 * if true invoke PoolableObject.validate() method
+	 * @param validateWhenReturn
+	 * @return
+	 */
+	public PoolSettings<T> validateWhenReturn(boolean validateWhenReturn) {
+		this.validateWhenReturn = validateWhenReturn;
+		return this;
+	}
+	
+	
 
 }
