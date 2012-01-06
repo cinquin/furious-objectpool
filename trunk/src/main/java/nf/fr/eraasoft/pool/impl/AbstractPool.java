@@ -53,7 +53,7 @@ public abstract class AbstractPool<T> implements ObjectPool<T>, Controlable {
 		if (t == null)
 			return;
 		
-		if (!settings.validateWhenReturn || poolableObject.validate(t)) {
+		if (!settings.validateWhenReturn() || poolableObject.validate(t)) {
 			poolableObject.passivate(t);
 			queue.add(t);
 		} else {

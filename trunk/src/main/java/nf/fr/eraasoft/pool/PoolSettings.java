@@ -21,7 +21,9 @@ public class PoolSettings<T> {
 	private int min = DEFAULT_MIN;
 	private int max = DEFAULT_MAX;
 	private int maxIdle = min;
-	public boolean validateWhenReturn = false;
+	private boolean validateWhenReturn = false;
+	private boolean debug = false;
+	
 
 	private final PoolFactory<T> poolFactory;
 
@@ -97,7 +99,20 @@ public class PoolSettings<T> {
 		this.validateWhenReturn = validateWhenReturn;
 		return this;
 	}
+
+	public boolean validateWhenReturn() {
+		return validateWhenReturn;
+	}
 	
+	public PoolSettings<T> debug(boolean debug) {
+		this.debug = debug;
+		return this;
+	}
+	
+	public boolean debug() {
+		return debug;
+	}
 	
 
 }
+ 

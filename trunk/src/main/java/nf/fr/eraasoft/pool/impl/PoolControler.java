@@ -75,7 +75,7 @@ public class PoolControler extends Thread {
 
 			if (poolSettings.pool() instanceof Controlable) {
 				Controlable controlable = (Controlable) poolSettings.pool();
-				System.out.println(controlable.toString());
+				if (poolSettings.debug()) System.out.println(controlable.toString());
 
 				/*
 				 * Remove idle
