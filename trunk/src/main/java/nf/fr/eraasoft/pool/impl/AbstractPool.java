@@ -141,6 +141,15 @@ public abstract class AbstractPool<T> implements ObjectPool<T>, Controlable {
 		for (T t : listT) {
 			queue.add(t);
 		}
+		
+		int objectToCreate = settings.min() - totalSize.get();
+		for (int n=0;n<objectToCreate;n++) {
+			try {
+				create();
+			} catch (Exception e) {
+				System.out.println("Create object error "+e.getClass().getSimpleName()+" "+e.getMessage());
+			}
+		}
 
 	}
 
