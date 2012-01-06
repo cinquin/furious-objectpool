@@ -30,7 +30,7 @@ public class PoolControler extends Thread {
 	public static void shutdown() {
 		if (instance !=null) {
 			instance.alive = false;
-			instance.interrupt();
+			
 			for (PoolSettings<?> poolSettings : instance.listPoolSettings) {
 				if (poolSettings.pool() instanceof Controlable) {
 					Controlable controlable = (Controlable) poolSettings.pool();
@@ -39,7 +39,8 @@ public class PoolControler extends Thread {
 				}
 
 			}
-			instance.listPoolSettings.clear();	
+			instance.listPoolSettings.clear();
+			instance.interrupt();
 		}
 	}
 
