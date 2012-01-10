@@ -16,6 +16,11 @@ public class PoolSettings<T> {
 	public static final int DEFAUL_MAX_WAIT = 5;
 	public static final int DEFAULT_MIN = 1;
 	public static final int DEFAULT_MAX = 10;
+	/**
+	 * Control thread 
+	 */
+	public static final int DEFAULT_TIME_BETWEEN_TWO_CONTROLE = 30;
+	private static int TIME_BETWEEN_TWO_CONTROLE = DEFAULT_TIME_BETWEEN_TWO_CONTROLE;
 
 	private int maxWait = DEFAUL_MAX_WAIT;
 	private int min = DEFAULT_MIN;
@@ -23,6 +28,14 @@ public class PoolSettings<T> {
 	private int maxIdle = min;
 	private boolean validateWhenReturn = false;
 	private boolean debug = false;
+	
+	public static void timeBetweenTwoControls(int time) {
+		TIME_BETWEEN_TWO_CONTROLE = time;
+	}
+	
+	public static int timeBetweenTwoControls() {
+		return TIME_BETWEEN_TWO_CONTROLE;
+	}
 	
 
 	private final PoolFactory<T> poolFactory;
@@ -111,6 +124,10 @@ public class PoolSettings<T> {
 	
 	public boolean debug() {
 		return debug;
+	}
+	
+	public void clearCurrentPool() {
+		poolFactory.clear();
 	}
 	
 
