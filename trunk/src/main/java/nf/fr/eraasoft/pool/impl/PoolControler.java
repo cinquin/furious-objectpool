@@ -8,7 +8,7 @@ import nf.fr.eraasoft.pool.PoolSettings;
 
 public class PoolControler extends Thread {
 	static PoolControler instance = null;
-	static int interval = 10000;
+	
 	boolean alive = false;
 	Set<PoolSettings<?>> listPoolSettings = new HashSet<PoolSettings<?>>();
 
@@ -21,7 +21,8 @@ public class PoolControler extends Thread {
 			instance.start();
 		}
 	}
-
+	
+	
 	public static void addPoolSettings(PoolSettings<?> poolSettings) {
 		launch();
 		instance.listPoolSettings.add(poolSettings);
@@ -53,7 +54,7 @@ public class PoolControler extends Thread {
 		alive = true;
 		while (alive) {
 			try {
-				sleep(interval);
+				sleep(PoolSettings.timeBetweenTwoControls()*1000);
 				checkPool();
 			} catch (InterruptedException e) {
 				System.out.println("PoolControler " + e.getMessage());

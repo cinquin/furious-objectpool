@@ -20,6 +20,12 @@ public class PoolFactory<T> {
 			createPoolInstance();
 		return pool;
 	}
+	
+	public void clear() {
+		if (getPool() instanceof Controlable) {
+			((Controlable) getPool()).clear();
+		}
+	}
 
 	private static class BBObjectPool<T> extends BlockingQueueObjectPool<T> {
 
