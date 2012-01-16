@@ -88,7 +88,7 @@ public abstract class AbstractPool<T> implements ObjectPool<T>, Controlable {
 
 	@Override
 	public void clear() {
-		for (int n=0;n<queue.size();n++) {
+		for (;queue.size()>0;) {
 			T t = queue.poll();
 			destroyObject(t);
 			
