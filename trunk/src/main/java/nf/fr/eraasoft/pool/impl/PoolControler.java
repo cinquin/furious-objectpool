@@ -51,6 +51,7 @@ public class PoolControler extends Thread {
 
 	@Override
 	public void run() {
+		System.out.println("Starting "+getName());
 		alive = true;
 		while (alive) {
 			try {
