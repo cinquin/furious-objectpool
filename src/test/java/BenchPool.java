@@ -17,7 +17,7 @@ import nf.fr.eraasoft.pool.PoolableObjectBase;
 public class BenchPool extends TestCase {
 
 	public void testPool() {
-		Bench bench = new Bench().minthreads(0).maxthreads(100).maxiteration(5000).pause(50);
+		Bench bench = new Bench().minthreads(0).maxthreads(50).maxiteration(1000).pause(50);
 
 		final ObjectPool commonBlockingPool = getCommonBlockingPool();
 		final ObjectPool commonGrowingPool = getCommonGrowingPool();

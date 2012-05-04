@@ -1,78 +1,94 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+     <modelVersion>4.0.0</modelVersion>
 
-	<groupId>nf.fr.eraasoft</groupId>
-	<artifactId>objectpool</artifactId>
-	<version>1.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+     <groupId>nf.fr.eraasoft</groupId>
+     <artifactId>objectpool</artifactId>
+     <version>1.1-SNAPSHOT</version>
+     <packaging>jar</packaging>
 
-	<name>furious-objectpool</name>
-	<url>http://maven.apache.org</url>
-   <parent>
-    	<groupId>org.sonatype.oss</groupId>
-    	<artifactId>oss-parent</artifactId>
-    	<version>7</version>
-    </parent>
-    <scm>
-    	<developerConnection>scm:svn:https://furious-objectpool.googlecode.com/svn/tags/objectpool-1.0</developerConnection>
-      	<connection>scm:svn:http://svn.sonatype.org/spice/tags/oss-parent-7/objectpool</connection>
-    	<url>http://svn.sonatype.org/spice/tags/oss-parent-7/objectpool</url>
-  	</scm>
+     <name>furious-objectpool</name>
+     <url>http://maven.apache.org</url>
+     <parent>
+          <groupId>org.sonatype.oss</groupId>
+          <artifactId>oss-parent</artifactId>
+          <version>7</version>
+     </parent>
+     <scm>
+          <developerConnection>scm:svn:https://furious-objectpool.googlecode.com/svn/tags/objectpool-1.0</developerConnection>
+          <connection>scm:svn:http://svn.sonatype.org/spice/tags/oss-parent-7/objectpool</connection>
+          <url>http://svn.sonatype.org/spice/tags/oss-parent-7/objectpool</url>
+     </scm>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
+     <properties>
+          <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+     </properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>nf.fr.eraasoft</groupId>
-			<artifactId>furious-javatester</artifactId>
-			<version>1.0</version>
-			<scope>test</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-			<version>1.1.1</version>
-			<scope>test</scope>
-		</dependency>
-		
-		
-		<dependency>
-			<groupId>commons-pool</groupId>
-			<artifactId>commons-pool</artifactId>
-			<version>1.5.6</version>
-		</dependency>
-		
+     <dependencies>
+          <dependency>
+               <groupId>junit</groupId>
+               <artifactId>junit</artifactId>
+               <version>3.8.1</version>
+               <scope>test</scope>
+          </dependency>
 
-		
-	</dependencies>
-	<build>
-	
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
+          <dependency>
+               <groupId>nf.fr.eraasoft</groupId>
+               <artifactId>furious-javatester</artifactId>
+               <version>1.0</version>
+               <scope>test</scope>
+          </dependency>
 
-					<configuration>
-						<source>1.6</source>
-						<target>1.6</target>
-					</configuration>
-				</plugin>
+          <dependency>
+               <groupId>commons-logging</groupId>
+               <artifactId>commons-logging</artifactId>
+               <version>1.1.1</version>
+               <scope>test</scope>
+          </dependency>
 
 
-			</plugins>
-		</pluginManagement>
-		</build>
+          <dependency>
+               <groupId>commons-pool</groupId>
+               <artifactId>commons-pool</artifactId>
+               <version>1.5.6</version>
+               <scope>test</scope>
+          </dependency>
+
+
+
+     </dependencies>
+     <build>
+          <plugins>
+
+               <plugin>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <extensions>true</extensions>
+                    <configuration>
+                         <instructions>
+                              <Export-Package>nf.fr.eraasoft.pool</Export-Package>
+                              <Private-Package>nf.fr.eraasoft.pool.impl</Private-Package>
+                         </instructions>
+                    </configuration>
+               </plugin>
+
+          </plugins>
+          <pluginManagement>
+               <plugins>
+                    <plugin>
+                         <groupId>org.apache.maven.plugins</groupId>
+                         <artifactId>maven-compiler-plugin</artifactId>
+
+                         <configuration>
+                              <source>1.6</source>
+                              <target>1.6</target>
+                         </configuration>
+                    </plugin>
+
+
+               </plugins>
+          </pluginManagement>
+     </build>
 
 
 </project>
