@@ -1,10 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
      <modelVersion>4.0.0</modelVersion>
 
      <groupId>nf.fr.eraasoft</groupId>
      <artifactId>objectpool</artifactId>
-     <version>1.1-SNAPSHOT</version>
+     <version>1.1</version>
      <packaging>jar</packaging>
 
      <name>furious-objectpool</name>
@@ -15,9 +14,9 @@
           <version>7</version>
      </parent>
      <scm>
-          <developerConnection>scm:svn:https://furious-objectpool.googlecode.com/svn/tags/objectpool-1.0</developerConnection>
-          <connection>scm:svn:http://svn.sonatype.org/spice/tags/oss-parent-7/objectpool</connection>
-          <url>http://svn.sonatype.org/spice/tags/oss-parent-7/objectpool</url>
+          <developerConnection>scm:svn:https://furious-objectpool.googlecode.com/svn/tags/objectpool-1.1</developerConnection>
+          <connection>scm:svn:http://svn.sonatype.org/spice/tags/objectpool-1.1</connection>
+          <url>http://svn.sonatype.org/spice/tags/objectpool-1.1</url>
      </scm>
 
      <properties>
