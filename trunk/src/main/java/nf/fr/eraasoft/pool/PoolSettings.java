@@ -101,6 +101,7 @@ public class PoolSettings<T> {
 
 	public static void shutdown() {
 		PoolControler.shutdown();
+		
 	}
 	
 	/**

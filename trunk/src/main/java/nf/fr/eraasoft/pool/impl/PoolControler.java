@@ -42,6 +42,7 @@ public class PoolControler extends Thread {
 			}
 			instance.listPoolSettings.clear();
 			instance.interrupt();
+			instance = null;
 		}
 	}
 
