@@ -1,0 +1,1 @@
+mvn release:perform -DconnectionUrl=scm:svn:https://furious-objectpool.googlecode.com/svn/tags/1.1
