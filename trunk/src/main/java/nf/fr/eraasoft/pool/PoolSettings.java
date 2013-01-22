@@ -4,6 +4,7 @@ import nf.fr.eraasoft.pool.impl.PoolControler;
 import nf.fr.eraasoft.pool.impl.PoolFactory;
 
 /**
+ * Classe used to configure your object pooling. Instance of this classes must be used in a Singleton context (static variable).<br>
  * 
  * @author eddie
  * 
@@ -63,11 +64,14 @@ public class PoolSettings<T> {
 		return this;
 	}
 
+	/**
+	 * Define the minimum number of element in the pool
+	 * @param min
+	 * @return 
+	 */
 	public PoolSettings<T> min(final int min) {
 		this.min = min;
-		if (maxIdle < min) {
-			maxIdle = min;
-		}
+		maxIdle = min;
 		if (max>0 && min > max) {
 			max(min);
 		}
