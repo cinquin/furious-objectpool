@@ -1,6 +1,7 @@
 import nf.fr.eraasoft.pool.ObjectPool;
 import nf.fr.eraasoft.pool.PoolException;
 import nf.fr.eraasoft.pool.PoolSettings;
+import nf.fr.eraasoft.pool.PoolableObject;
 import nf.fr.eraasoft.pool.PoolableObjectBase;
 
 import junit.framework.TestCase;
@@ -47,5 +48,20 @@ public class TestPool extends TestCase {
 		}
 		PoolSettings.shutdown();
 
+	}
+	
+	public void testCreatePoolableObect() {
+		PoolableObject<StringBuilder> poolableStringBuilder = new PoolableObjectBase<StringBuilder>() {
+			@Override
+			public StringBuilder make() throws PoolException {
+				return new StringBuilder();
+			}
+
+			@Override
+			public void activate(StringBuilder t) throws PoolException {
+				t.setLength(0);
+			}
+		};
+		
 	}
 }

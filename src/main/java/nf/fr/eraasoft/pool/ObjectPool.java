@@ -2,11 +2,10 @@ package nf.fr.eraasoft.pool;
 
 public interface ObjectPool<T> {
 	/**
-	 * <pre>
-	 * PoolSettings<MyType> poolSettings = ....
-	 * 
-	 * MyType myType = poolSettings.pool().getObj();
-	 * </pre>
+	 * <pre> {@literal
+		PoolSettings<MyType> poolSettings = ....;
+		MyType myType = poolSettings.pool().getObj();
+	  }</pre>
 	 * 
 	 * @return an instance of T object
 	 * @throws InterruptedException
