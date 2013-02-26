@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Threads');
+                data.addColumn('number', 'ApacheCommon Generic-Blocking');
+        data.addColumn('number', 'ApacheCommon Generic-Growing');
+        data.addColumn('number', 'LinkedBlockingQueue ObjectPool');
+        data.addColumn('number', 'ConcurrentLinkedQueue ObjectPool');
+        data.addRows([
+		[ '0' , 34 , 46 , 19 , 29  ] ,
+		[ '1' , 45 , 29 , 32 , 33  ] ,
+		[ '2' , 60 , 58 , 37 , 104  ] ,
+		[ '3' , 50 , 47 , 15 , 23  ] ,
+		[ '4' , 36 , 56 , 39 , 31  ] ,
+		[ '5' , 105 , 75 , 27 , 36  ] ,
+		[ '6' , 56 , 87 , 38 , 26  ] ,
+		[ '7' , 115 , 100 , 42 , 12  ] ,
+		[ '8' , 110 , 109 , 10 , 23  ] ,
+		[ '9' , 128 , 126 , 69 , 11  ] ,
+		[ '10' , 128 , 110 , 74 , 25  ] ,
+		[ '11' , 149 , 127 , 72 , 12  ] ,
+		[ '12' , 126 , 185 , 52 , 18  ] ,
+		[ '13' , 227 , 107 , 79 , 13  ] ,
+		[ '14' , 283 , 242 , 95 , 15  ] ,
+		[ '15' , 263 , 219 , 88 , 22  ] ,
+		[ '16' , 411 , 314 , 26 , 17  ] ,
+		[ '17' , 536 , 355 , 117 , 19  ] ,
+		[ '18' , 467 , 323 , 47 , 65  ] ,
+		[ '19' , 480 , 447 , 72 , 18  ] ,
+		[ '20' , 515 , 671 , 106 , 21  ] ,
+		[ '21' , 604 , 511 , 101 , 24  ] ,
+		[ '22' , 730 , 783 , 58 , 15  ] ,
+		[ '23' , 871 , 745 , 116 , 20  ] ,
+		[ '24' , 906 , 823 , 127 , 11  ] ,
+		[ '25' , 1076 , 802 , 150 , 20  ] ,
+		[ '26' , 672 , 1112 , 100 , 28  ] ,
+		[ '27' , 921 , 1081 , 57 , 14  ] ,
+		[ '28' , 1293 , 1216 , 129 , 17  ] ,
+		[ '29' , 1078 , 1054 , 125 , 19  ] ,
+		[ '30' , 1276 , 1246 , 149 , 20  ] ,
+		[ '31' , 1179 , 933 , 187 , 25  ] ,
+		[ '32' , 1270 , 1129 , 162 , 18  ] ,
+		[ '33' , 1190 , 1168 , 139 , 11  ] ,
+		[ '34' , 1354 , 1191 , 209 , 21  ] ,
+		[ '35' , 1291 , 1102 , 174 , 12  ] ,
+		[ '36' , 1260 , 1288 , 204 , 9  ] ,
+		[ '37' , 1320 , 1371 , 184 , 30  ] ,
+		[ '38' , 1606 , 1438 , 226 , 12  ] ,
+		[ '39' , 1582 , 1476 , 178 , 25  ] ,
+		[ '40' , 1558 , 1483 , 208 , 30  ] ,
+		[ '41' , 1535 , 1463 , 184 , 20  ] ,
+		[ '42' , 1628 , 1611 , 192 , 22  ] ,
+		[ '43' , 1769 , 1724 , 201 , 33  ] ,
+		[ '44' , 1968 , 1724 , 246 , 14  ] ,
+		[ '45' , 1732 , 1759 , 242 , 15  ] ,
+		[ '46' , 1762 , 1676 , 245 , 11  ] ,
+		[ '47' , 1814 , 1840 , 235 , 36  ] ,
+		[ '48' , 1842 , 1853 , 241 , 29  ] ,
+		[ '49' , 1962 , 1769 , 258 , 18  ] 
+                      
+		]);
+        var options = {
+          width: 1000, height: 400,
+          
+          chartArea: {width: '60%'},
+          title: 'Object pool comparaison'
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+
+    <div id="chart_div"></div>
+  </body>
+</html>
