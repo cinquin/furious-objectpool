@@ -1,5 +1,6 @@
 package nf.fr.eraasoft.pool.impl;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,8 +11,14 @@ public class PoolControler extends Thread {
 	static PoolControler instance = null;
 	
 	boolean alive = false;
-	Set<PoolSettings<?>> listPoolSettings = new HashSet<PoolSettings<?>>();
+	Set<PoolSettings<?>> listPoolSettings = Collections.synchronizedSet(new HashSet<PoolSettings<?>>());
 
+	private PoolControler() {
+		setName("PoolControler");
+	}
+	/**
+	 * 
+	 */
 	private static synchronized void  launch() {
 		if (instance == null) {
 			instance = new PoolControler();
@@ -23,7 +30,7 @@ public class PoolControler extends Thread {
 	}
 	
 	
-	public static void addPoolSettings(PoolSettings<?> poolSettings) {
+	public static synchronized void addPoolSettings(PoolSettings<?> poolSettings) {
 		launch();
 		instance.listPoolSettings.add(poolSettings);
 	}
@@ -46,9 +53,7 @@ public class PoolControler extends Thread {
 		}
 	}
 
-	private PoolControler() {
-		setName("PoolControler");
-	}
+
 
 	@Override
 	public void run() {
@@ -73,27 +78,29 @@ public class PoolControler extends Thread {
 	 * 
 	 */
 	private void checkPool() {
+		synchronized (listPoolSettings) {
+			for (PoolSettings<?> poolSettings : listPoolSettings) {
 
-		for (PoolSettings<?> poolSettings : listPoolSettings) {
+				if (poolSettings.pool() instanceof Controlable) {
+					Controlable controlable = (Controlable) poolSettings.pool();
+					if (poolSettings.debug()) System.out.println(controlable.toString());
 
-			if (poolSettings.pool() instanceof Controlable) {
-				Controlable controlable = (Controlable) poolSettings.pool();
-				if (poolSettings.debug()) System.out.println(controlable.toString());
+					/*
+					 * Remove idle
+					 */
+					int idleToRemoves = controlable.idles() - poolSettings.maxIdle();
+					if (idleToRemoves > 0)
+						controlable.remove(idleToRemoves);
 
-				/*
-				 * Remove idle
-				 */
-				int idleToRemoves = controlable.idles() - poolSettings.maxIdle();
-				if (idleToRemoves > 0)
-					controlable.remove(idleToRemoves);
+					/*
+					 * Check idle
+					 */
+					controlable.validateIdles();
 
-				/*
-				 * Check idle
-				 */
-				controlable.validateIdles();
-
-			}
+				}
+			}	
 		}
+		
 
 	}
 

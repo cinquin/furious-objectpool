@@ -3,3 +3,4 @@ mvn gpg:sign-and-deploy-file -Durl=https://oss.sonatype.org/service/local/stagin
 mvn gpg:sign-and-deploy-file -Durl=https://oss.sonatype.org/service/local/staging/deploy/maven2/ -DrepositoryId=sonatype-nexus-staging -DpomFile=pom.xml -Dfile=target/objectpool-1.1.1-sources.jar -Dclassifier=sources
 mvn gpg:sign-and-deploy-file -Durl=https://oss.sonatype.org/service/local/staging/deploy/maven2/ -DrepositoryId=sonatype-nexus-staging -DpomFile=pom.xml -Dfile=target/objectpool-1.1.1-javadoc.jar -Dclassifier=javadoc
 
+svn cp https://furious-objectpool.googlecode.com/svn/trunk https://furious-objectpool.googlecode.com/svn/tags/1.1.1
