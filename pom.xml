@@ -3,7 +3,7 @@
 
      <groupId>nf.fr.eraasoft</groupId>
      <artifactId>objectpool</artifactId>
-     <version>1.1.2-snapshot</version>
+     <version>1.1.2</version>
      <packaging>bundle</packaging>
 
      <name>furious-objectpool</name>
@@ -95,6 +95,72 @@
           </pluginManagement>
      </build>
 <profiles>
+ <profile>
+     <id>deploy</id>
+     <build>
+          <plugins>
+               <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>1.1</version>
+                    <executions>
+                         <execution>
+                              <id>sign-and-deploy-file</id>
+                              <phase>install</phase>
+                              <goals><goal>sign-and-deploy-file</goal></goals>                              
+                         </execution>
+                    </executions>
+                    <configuration>
+                         <repositoryId>sonatype-nexus-staging</repositoryId>
+                         <pomFile>pom.xml</pomFile>
+                         <file>target/${artifactId}-${version}.jar</file>
+                         <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                    </configuration>
+               </plugin>
+               <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>1.1</version>
+                    <executions>
+                         <execution>
+                              <id>sign-and-deploy-file</id>
+                              <phase>install</phase>
+                              <goals><goal>sign-and-deploy-file</goal></goals>                              
+                         </execution>
+                    </executions>
+                    <configuration>
+                         <repositoryId>sonatype-nexus-staging</repositoryId>
+                         <pomFile>pom.xml</pomFile>
+                         <file>target/${artifactId}-${version}-sources.jar</file>
+                         <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                         <classifier>sources</classifier>
+                    </configuration>
+               </plugin>
+               <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>1.1</version>
+                    <executions>
+                         <execution>
+                              <id>sign-and-deploy-file</id>
+                              <phase>install</phase>
+                              <goals><goal>sign-and-deploy-file</goal></goals>                              
+                         </execution>
+                    </executions>
+                    <configuration>
+                         <repositoryId>sonatype-nexus-staging</repositoryId>
+                         <pomFile>pom.xml</pomFile>
+                         <file>target/${artifactId}-${version}-javadocs.jar</file>
+                         <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                         <classifier>javadocs</classifier>
+                    </configuration>
+               </plugin>
+
+
+          </plugins>
+     </build>
+     
+ </profile>
   <profile>
     <id>release-sign-artifacts</id>
     <activation>
