@@ -12,6 +12,10 @@ public interface ObjectPool<T> {
 	 */
 	public T getObj() throws PoolException;
 
+	/**
+	 * Return object to the pool
+	 * @param object
+	 */
 	public void returnObj(T object);
 
 }

@@ -41,6 +41,10 @@ public class PoolSettings<T> {
 
 	private final PoolFactory<T> poolFactory;
 
+	/**
+	 * Create a new PoolSetting instance with a Poolable object
+	 * @param poolableObject
+	 */
 	public PoolSettings(final PoolableObject<T> poolableObject) {
 		this.poolFactory = new PoolFactory<T>(this, poolableObject);
 		PoolControler.addPoolSettings(this);
