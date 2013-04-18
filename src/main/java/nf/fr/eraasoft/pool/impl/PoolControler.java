@@ -34,6 +34,11 @@ public class PoolControler extends Thread {
 		launch();
 		instance.listPoolSettings.add(poolSettings);
 	}
+	
+	public static synchronized void removePoolSettings(PoolSettings<?> poolSettings) {
+		poolSettings.clearCurrentPool();
+		instance.listPoolSettings.remove(poolSettings);
+	}
 
 	public static void shutdown() {
 		if (instance !=null) {

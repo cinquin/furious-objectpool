@@ -23,7 +23,7 @@ public class ConcurrentLinkedQueuePool<T> extends AbstractPool<T> {
 	}
 
 	@Override
-	public T getObj() throws PoolException {
+	public synchronized T getObj() throws PoolException {
 		T t = queue.poll();
 		if (t==null) {
 			t = poolableObject.make();

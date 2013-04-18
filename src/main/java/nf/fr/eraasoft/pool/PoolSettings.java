@@ -6,6 +6,7 @@ import nf.fr.eraasoft.pool.impl.PoolFactory;
 /**
  * Classe used to configure your object pooling. Instance of this classes must be used in a Singleton context (static variable).<br>
  * 
+ * 
  * @author eddie
  * 
  * @param <T>
@@ -42,7 +43,8 @@ public class PoolSettings<T> {
 	private final PoolFactory<T> poolFactory;
 
 	/**
-	 * Create a new PoolSetting instance with a Poolable object
+	 * Create a new PoolSetting instance with a Poolable object<br>
+	 * An instance of this pool setting is added to the PoolControler<br>
 	 * @param poolableObject
 	 */
 	public PoolSettings(final PoolableObject<T> poolableObject) {
@@ -50,6 +52,9 @@ public class PoolSettings<T> {
 		PoolControler.addPoolSettings(this);
 	}
 
+	/** Return the ObjectPool associed whith this PoolSetting
+	 *  
+	 **/
 	public ObjectPool<T> pool() {
 		return poolFactory.getPool();
 	}
@@ -107,9 +112,20 @@ public class PoolSettings<T> {
 		return max;
 	}
 
+	/**
+	 * Shutdown all the pools referenced in the PoolControler<br/>
+	 * 
+	 */
 	public static void shutdown() {
 		PoolControler.shutdown();
-		
+	}
+	
+	/**
+	 * Clear the ObjectPool associated with this PoolSetting and remove it to the PoolControler<br>
+	 * 
+	 */
+	public static void removePoolSetting(@SuppressWarnings("rawtypes") PoolSettings poolSettings) {
+		PoolControler.removePoolSettings(poolSettings);
 	}
 	
 	/**
