@@ -35,7 +35,7 @@ public abstract class BlockingQueueObjectPool<T> extends AbstractPool<T> {
 
 
 	@Override
-	public T getObj() throws PoolException {
+	public synchronized T getObj() throws PoolException {
 		if (queue.size() == 0 && totalSize.get() < settings.max()) {
 			create();
 		}
